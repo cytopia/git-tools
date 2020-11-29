@@ -5,21 +5,23 @@ set -u
 
 # Commit, Branch or Tag
 HEAD="$( git branch --no-color | grep '^\*' | sed 's|)||g' | xargs -n1 | tail -1 )"
+echo "HEAD: ${HEAD}"
 
 # Commit Hash
 HASH="$( git rev-parse HEAD | grep -Eo '^[0-9a-zA-Z]{7}' )"
+echo "HASH: ${HASH}"
 
 # Hash is found in what Branch?
 FROM="$( git branch --contains  "${HASH}" | head -2 | tac | head -1 | sed 's|^*[[:space:]]*||g' | xargs )"
+echo "FROM: ${FROM}"
 
 # How many commits behind FROM branch
 BEHIND="$( git rev-list --count "${HASH}..${FROM}" )"
+echo "BEHI: ${BEHIND}"
 
 
-echo "HEAD: ${HEAD}"
 echo "REV:  $( git name-rev "${HEAD}" )"
 echo "PNT:  $( git tag --points-at HEAD )"
-echo "FROM: ${FROM}"
 echo
 
 
