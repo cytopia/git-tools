@@ -13,7 +13,7 @@ echo "HASH: ${HASH}"
 echo "FROM: $( git branch --contains  "${HASH}" )"
 
 # Hash is found in what Branch?
-FROM="$( git branch --contains  "${HASH}" | head -2 | tac | head -1 | sed 's|^*[[:space:]]*||g' | xargs )"
+FROM="$( git branch --contains  "${HASH}" | head -2 | tac | head -1 | sed 's|^*[[:space:]]*||g' | sed 's|)||g' | xargs -n1 | tail -1 | xargs )"
 echo "FROM: ${FROM}"
 
 # How many commits behind FROM branch
