@@ -10,6 +10,7 @@ echo "HEAD: ${HEAD}"
 # Commit Hash
 HASH="$( git rev-parse HEAD | grep -Eo '^[0-9a-zA-Z]{7}' )"
 echo "HASH: ${HASH}"
+echo "FROM: $( git branch --contains  "${HASH}" )"
 
 # Hash is found in what Branch?
 FROM="$( git branch --contains  "${HASH}" | head -2 | tac | head -1 | sed 's|^*[[:space:]]*||g' | xargs )"
