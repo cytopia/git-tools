@@ -22,7 +22,7 @@ on:
 # -------------------------------------------------------------------------------------------------
 jobs:
   test:
-    name: "[ ref: ${{ matrix.target }} ]"
+    name: "[ target: ${{ matrix.target }} ]"
     runs-on: ubuntu-latest
     strategy:
       fail-fast: False
