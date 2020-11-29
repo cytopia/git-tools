@@ -16,11 +16,11 @@ FROM="$( git branch --contains  "${HASH}" | head -2 | tac | head -1 | sed 's|^*[
 BEHIND="$( git rev-list --count "${HASH}..${FROM}" )"
 
 
-#echo "HEAD: ${HEAD}"
-#echo "REV:  $( git name-rev "${HEAD}" )"
-#echo "PNT:  $( git tag --points-at HEAD )"
-#echo "FROM: ${FROM}"
-#echo
+echo "HEAD: ${HEAD}"
+echo "REV:  $( git name-rev "${HEAD}" )"
+echo "PNT:  $( git tag --points-at HEAD )"
+echo "FROM: ${FROM}"
+echo
 
 
 ###
