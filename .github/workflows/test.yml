@@ -48,6 +48,8 @@ jobs:
 
           # Retrieve git info (tags, etc)
           git fetch --all
+          git branch --no-color
+          git rev-parse HEAD
           make ${TARGET}
         env:
           TARGET: ${{ matrix.target }}
